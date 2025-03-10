@@ -148,6 +148,11 @@ nav {
   transition: all 0.3s ease;
   width: calc(33.33% - 15px);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  
+}
+.product-image {
+  width: 150px;
+  height: 150px;
   margin: 0 auto;
 }
 

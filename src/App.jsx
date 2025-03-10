@@ -30,6 +30,7 @@ function App() {
   }, []);
   const addNewProduct = (newProduct) => {
     setNewProducts([...newProducts, newProduct]);
+    
   };
 
   const location = useLocation();
@@ -50,17 +51,17 @@ function App() {
           <Route
             path="/"
             element={location.pathname === "/" ? (
-                <div className="product-list">
-                  {[...newProducts, ...products].map((product) => (
-
-                    <ProductCard
-                      key={product.id}
-                      name={product.title}
-                      price={product.price}
-                      description={product.description}
-                    />
-                  ))}
-                </div>
+              <div className="product-list">
+                {[...newProducts, ...products].map((product) => (
+                  <ProductCard
+                    key={product.id}
+                    name={product.title}
+                    price={product.price}
+                    image={product.image}
+                    description={product.description}
+                  />
+                ))}
+              </div>
             ) : (
                 <div></div>
             )
@@ -73,3 +74,5 @@ function App() {
 }
 
 export default App;
+
+
