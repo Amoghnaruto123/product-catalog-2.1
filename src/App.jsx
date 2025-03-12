@@ -24,12 +24,16 @@ function App() {
       try {
         const response = await fetch("https://fakestoreapi.com/products?limit=4");
         if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
+          throw new Error(`HTTP error! Status: ${response.status}`);
         } else {
           const data = await response.json();
           const modifiedProducts = data.map((product) => {
             const trimmedDescription = product.description.split(" ").slice(0, 5).join(" ");
+            const uniqueId = Math.random(); 
             return {
+              
+              old_id: product.id,
+              id: uniqueId,
               ...product,
               description: trimmedDescription,
             };
@@ -50,17 +54,24 @@ function App() {
   };
 
   const addToCart = (product) => {
-    const productExists = cartItems.find((item) => item.id === product.id);
+    const productExists = cartItems.find((item) => item.old_id === product.old_id);
+    const newProduct = {
+        old_id : product.old_id,
+        title: product.title,
+        image: product.image,
+        price: product.price,
+        quantity: 1
+    }
     if (productExists) {
-      setCartItems(
+        setCartItems(
         cartItems.map((item) =>
           item.id === product.id
-            ? { ...productExists, quantity: productExists.quantity + 1 }
+            ? { ...item, quantity: item.quantity + 1 }
             : item
         )
       );
     } else {
-      setCartItems([...cartItems, { ...product, quantity: 1 }]);
+      setCartItems([...cartItems, newProduct]);
     }
   };
 
@@ -89,7 +100,7 @@ function App() {
                     {error && <p>Error: {error}</p>}
                     {!loading && !error &&
                       [...newProducts, ...products].map((product) => (
-                        <ProductCard
+                       <ProductCard
                           key={product.id}
                           name={product.title}
                           price={product.price}

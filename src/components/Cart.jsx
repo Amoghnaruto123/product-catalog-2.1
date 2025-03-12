@@ -1,5 +1,4 @@
 import React from 'react';
-
 function Cart({ cart, setCart }) {
   const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
   const grandTotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
@@ -9,6 +8,22 @@ function Cart({ cart, setCart }) {
     setCart(newCart);
   };
 
+  const updateQuantity = (itemToUpdate, newQuantity) => {
+    if (newQuantity < 1) {
+        removeItem(itemToUpdate)
+        return
+    }
+    setCart(
+      cart.map((item) => {
+        if (item.id === itemToUpdate.id) {
+          return { ...item, quantity: newQuantity };
+        }
+        return item;
+      })
+    );
+
+  };
+
   return (
     <div className="cart-container">
       <h2>Your Cart</h2>
@@ -16,18 +31,31 @@ function Cart({ cart, setCart }) {
         <p>Your cart is empty.</p>
       ) : (
         <ul className="cart-items">
+          
           {cart.map((item, index) => (
             <li key={index} className="cart-item">
+              <img src={item.image || '/placeholder.jpg'} alt={item.title} className="item-image" />
               <div className='item-details'>
-                <span className="item-name">{item.name}</span>
-                <span className="item-price">Price: ${item.price.toFixed(2)}</span>
-                <span className="item-quantity">Quantity: {item.quantity}</span>
-                <span className="item-total">Total: ${(item.price * item.quantity).toFixed(2)}</span>
+                <span className="item-name">{item.title}</span>
+                <span className="item-price">
+                  Price: ${item.price?.toFixed(2)}
+                </span>
+                <div className="quantity-controls">
+                  <button onClick={() => updateQuantity(item, item.quantity - 1)}>-</button>
+                  <span className="item-quantity">
+                    Quantity: {item?.quantity}
+                  </span>
+                  <button onClick={() => updateQuantity(item, item.quantity + 1)}>+</button>
                 </div>
-              
+                <span className="item-total">
+                  Total: ${(item.price * item.quantity).toFixed(2)}
+                </span>
+              </div>
+              <div className='remove-container' >
               <button className='remove-button' onClick={() => removeItem(item)}>
-                  Remove
+              <i className="fa-solid fa-trash"></i>
                 </button>
+                </div>  
             </li>
           ))}
         </ul>
