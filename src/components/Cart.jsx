@@ -1,29 +1,29 @@
 import React from 'react';
 function Cart({ cart, setCart }) {
-  const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-  const grandTotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0)
+  const grandTotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0)
 
   const removeItem = (itemToRemove) => {
-    const newCart = cart.filter((item) => item.id !== itemToRemove.id);
-    setCart(newCart);
+    const newCart = cart.filter((item) => item.id !== itemToRemove.id)
+    setCart(newCart)
   };
 
-  const updateQuantity = (itemToUpdate, newQuantity) => {
+  const updateQuantity = (itemToUpdate, newQuantity) => {   
     if (newQuantity < 1) {
         removeItem(itemToUpdate)
         return
     }
     setCart(
-      cart.map((item) => {
-        if (item.id === itemToUpdate.id) {
-          return { ...item, quantity: newQuantity };
-        }
-        return item;
-      })
+      cart.map((item) =>
+        item.id === itemToUpdate.id
+          ? { ...item, quantity: newQuantity }
+          : item
+      )
     );
-
-  };
-
+  }
+  
+  
+  
   return (
     <div className="cart-container">
       <h2>Your Cart</h2>

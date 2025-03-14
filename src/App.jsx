@@ -28,14 +28,11 @@ function App() {
         } else {
           const data = await response.json();
           const modifiedProducts = data.map((product) => {
-            const trimmedDescription = product.description.split(" ").slice(0, 5).join(" ");
-            const uniqueId = Math.random(); 
+            const trimmedDescription = product.description.split(" ").slice(0, 5).join(" ");            
             return {
-              
-              old_id: product.id,
-              id: uniqueId,
               ...product,
               description: trimmedDescription,
+
             };
           });
           setProducts(modifiedProducts);
@@ -54,20 +51,18 @@ function App() {
   };
 
   const addToCart = (product) => {
-    const productExists = cartItems.find((item) => item.old_id === product.old_id);
-    const newProduct = {
-        old_id : product.old_id,
-        title: product.title,
-        image: product.image,
-        price: product.price,
-        quantity: 1
-    }
+    const productExists = cartItems.find((item) => item.id === product.id);
+      const newProduct = {
+          ...product,
+          quantity: 1
+      }
     if (productExists) {
         setCartItems(
         cartItems.map((item) =>
-          item.id === product.id
-            ? { ...item, quantity: item.quantity + 1 }
-            : item
+            item.id === product.id
+                ? { ...item, quantity: item.quantity + 1 }
+                : item
+
         )
       );
     } else {
