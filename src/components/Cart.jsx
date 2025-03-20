@@ -34,8 +34,8 @@ function Cart({ cart, setCart }) {
               <img src={item.image || '/placeholder.jpg'} alt={item.title} className="item-image" />
               <div className='item-details'>
                 <span className="item-name">{item.title}</span>
-                <span className="item-price">
-                  Price: ${item.price?.toFixed(2)}
+                <span className="item-price">                  
+                  Price: ₹{item.price?.toFixed(2)}
                 </span>
                 <div className="quantity-controls">
                   <button onClick={() => updateQuantity(item, item.quantity - 1)}>-</button>
@@ -44,8 +44,8 @@ function Cart({ cart, setCart }) {
                   </span>
                   <button onClick={() => updateQuantity(item, item.quantity + 1)}>+</button>
                 </div>
-                <span className="item-total">
-                  Total: ${(item.price * item.quantity).toFixed(2)}
+                <span className="item-total">                  
+                  Total: ₹{(item.price * item.quantity).toFixed(2)}
                 </span>
               </div>
               <div className='remove-container' >
@@ -59,7 +59,7 @@ function Cart({ cart, setCart }) {
       )}
         {cart.length > 0 && (<div className="cart-summary">
           <p>Total Items: {totalItems}</p>
-          <p>Grand Total: ${grandTotal.toFixed(2)}</p>
+          <p>Grand Total: ₹{grandTotal.toFixed(2)}</p>
         </div>)}
     </div>
   );
