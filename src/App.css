@@ -34,9 +34,10 @@ nav {
   display: flex;
   
   align-items: center;
+  padding:0 20px;
   padding: 1rem 1.5rem;
   transition: all 0.5s ease-in-out;
-  justify-content: space-between;
+  justify-content: space-around;
   gap: 15px;
   top: 0;
   left: 0;
@@ -65,6 +66,8 @@ nav {
   display: flex; /* Make .nav-links a flex container */
   gap: 15px; /* Adjust spacing between links */
   align-items: center; /* Center items vertically */
+  margin-left: auto;
+  padding-right: 20px;
 }
 .nav-container, .auth-links{
   align-items: center; /* Center items vertically */
@@ -75,6 +78,7 @@ nav {
   color: #000;
   padding: 10px; /* Add padding for better click area */
   transition: color 0.5s ease-in-out;
+  
 }
 
 .navbar-cart-btn {
@@ -90,12 +94,14 @@ nav {
 .nav-links a:hover, .nav-links a.active {
   color: #646cff;
   transition: all 0.5s ease-in-out;
+
 }
 
 .auth-links a:hover, .auth-links a.active {
   color: #646cff;
   transition: all 0.5s ease-in-out;
   gap: 15px;
+  
 }
 
 .logo {
@@ -296,14 +302,14 @@ nav {
 }
 button{
   background: linear-gradient(135deg, #646cff, #535bf2);
-  color: white;
+  color: black;
   padding: 14px 24px;
   font-weight: 500;
   border: none;
-  border-radius: 10px;
   transition: all 0.3s ease;
 }
-.add-cart-btn:hover{
+
+button:hover{
   transform: translateY(-2px); /* Lift up on hover */
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
   border: 1px solid #ddd;
@@ -386,6 +392,16 @@ button{
 
 .cart-item .name{
   font-weight:700;
+}
+
+.cart-item .quantity-controls button {
+  background: black;
+  color: white;
+  font-size: 1rem;
+  border: none;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  margin: 0 0.5rem;
 }
 .cart-item .price,.cart-total span{
   font-size: 1.2rem;
