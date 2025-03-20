@@ -91,6 +91,15 @@ nav {
   transform: skew(-10deg);
 }
 
+.navbar-signup{
+  font-family: "Courier New", Courier, monospace;
+  font-style: italic;
+  font-size: 18px;
+  color: #ff4500;
+  text-decoration: underline;
+  transform: skew(-10deg);
+}
+
 .nav-links a:hover, .nav-links a.active {
   color: #646cff;
   transition: all 0.5s ease-in-out;
