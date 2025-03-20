@@ -255,28 +255,46 @@ nav {
   resize: vertical;
 }
 
-.form-submit {
-  background: linear-gradient(135deg, #646cff, #535bf2);
-  color: white;
-  padding: 14px 24px;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  margin-top: 15px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  font-weight: 500;
-}
 
+.add-cart-btn{
+  background: linear-gradient(135deg, #646cff, #535bf2);
+  color:white;
+}
 .form-submit:hover {
   transform: translateY(-2px); /* Lift up on hover */
-  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
-  background: linear-gradient(135deg, #535bf2, #4049d9);
 }
 
 .form-container input[type="file"] {
   width: 100%;
   padding: 10px;
+  
+  
+  
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+.add-cart-btn{
+  background: linear-gradient(135deg, #646cff, #535bf2);
+  color: white;
+  border: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 14px 24px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button{
+  background: linear-gradient(135deg, #646cff, #535bf2);
+  color: white;
+  padding: 14px 24px;
+  border: none;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+.add-cart-btn:hover{
+  transform: translateY(-2px); /* Lift up on hover */
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
   border: 1px solid #ddd;
   border-radius: 5px;
 }
