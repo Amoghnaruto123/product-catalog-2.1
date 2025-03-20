@@ -57,11 +57,11 @@ function SignUpPage() {
               required
             />
           </div>
-          <button type="submit" disabled={loading}>
+          <button type="submit" disabled={loading} className="form-button">
             {loading ? 'Signing up...' : 'Sign Up'}
           </button>
         </form>
-        <button className="google-auth-button">Sign Up with Google</button>
+        <button className="google-auth-button">Sign Up with Google</button> 
       </div>
     </div>
   );

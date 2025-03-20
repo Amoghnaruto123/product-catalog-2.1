@@ -222,6 +222,7 @@ nav {
   display: flex;
   flex-direction: column;
     align-items: flex-start;
+    padding-bottom: 10px;
 
   
 }
@@ -308,13 +309,27 @@ nav {
   text-align: center;
   margin-top: 10px;
   transition: background-color 0.3s ease;
+
+}
+.button-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-button{
+    background: linear-gradient(135deg, #646cff, #535bf2);
+    color: white;
+    padding: 14px 24px;
+    font-weight: 500;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 button{
-  background: linear-gradient(135deg, #646cff, #535bf2);
-  color: black;
-  padding: 14px 24px;
-  font-weight: 500;
-  border: none;
+  padding: 0.6em 1.2em;
   transition: all 0.3s ease;
 }
 
@@ -322,7 +337,24 @@ button:hover{
   transform: translateY(-2px); /* Lift up on hover */
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
   border: 1px solid #ddd;
+  background: linear-gradient(135deg, #535bf2, #4049d9);
   border-radius: 5px;
+}
+
+.google-auth-button{
+    background-color: #4285f4;
+    color: white;
+    padding: 14px 24px;
+    font-weight: 500;
+    border: none;
+    border-radius: 10px;
+    margin-top: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  margin-right: auto;
+  text-align: center;
 }
 
 .image-preview-container {
