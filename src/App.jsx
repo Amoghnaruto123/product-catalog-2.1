@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { useEffect, useState, } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import ProductCard from "./components/ProductCard";
 import { useLocation } from "react-router-dom";
@@ -9,10 +9,9 @@ import CartPage from "./pages/CartPage";
 import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";
 
-
 function App() {
   const [newProducts, setNewProducts] = useState([]);
-  const [products, setProducts] = useState([]); 
+  const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [cartItems, setCartItems] = useState([]);
@@ -32,7 +31,6 @@ function App() {
             return {
               ...product,
               description: trimmedDescription,
-
             };
           });
           setProducts(modifiedProducts);
@@ -45,79 +43,68 @@ function App() {
     };
     fetchProducts();
   }, []);
+
   const addNewProduct = (newProduct) => {
     setNewProducts([...newProducts, newProduct]);
-    
   };
 
   const addToCart = (product) => {
-    const productExists = cartItems.find((item) => item.id === product.id);
-      const newProduct = {
-          ...product,
-          quantity: 1
+    setCartItems((prevCartItems) => {
+      const existingItem = prevCartItems.find((item) => item.id === product.id);
+      
+      if (existingItem) {
+        return prevCartItems.map((item) =>
+          item.id === product.id
+            ? { ...item, quantity: item.quantity + 1, totalPrice: (item.quantity + 1) * item.price }
+            : item
+        );
+      } else {
+        return [...prevCartItems, { ...product, quantity: 1, totalPrice: product.price }];
       }
-    if (productExists) {
-        setCartItems(
-        cartItems.map((item) =>
-            item.id === product.id
-                ? { ...item, quantity: item.quantity + 1 }
-                : item
-
-        )
-      );
-    } else {
-      setCartItems([...cartItems, newProduct]);
-    }
+    });
   };
-
 
   const location = useLocation();
 
   return (
-      <div className="main-content">
-        <div className="app-container">
-          <Navbar />
+    <div className="main-content">
+      <div className="app-container">
+        <Navbar />
 
-          <Routes>
-            <Route
-              path="/add-product"
-              element={<AddProductPage addNewProduct={addNewProduct} />}
-            />
-           <Route path="/login" element={<LoginPage />} />
-            <Route path="/signup" element={<SignUpPage />} />
-            <Route path="/cart" element={<CartPage cart={cartItems} setCart={setCartItems}/>} />
-            <Route
-              path="/"
-              element={
-                location.pathname === "/" ? (
-                  <div className="product-list">
-                    {loading && <p>Loading products...</p>}
-                    {error && <p>Error: {error}</p>}
-                    {!loading && !error &&
-                      [...newProducts, ...products].map((product) => (
-                       <ProductCard
-                          key={product.id}
-                          name={product.title}
-                          price={product.price}
-                          image={product.image}
-                          description={product.description}
-                          addToCart={addToCart}
-
-                        />
-                      ))
-                    }
-                  </div>
-
+        <Routes>
+          <Route path="/add-product" element={<AddProductPage addNewProduct={addNewProduct} />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/signup" element={<SignUpPage />} />
+          <Route path="/cart" element={<CartPage cart={cartItems} setCart={setCartItems} />} />
+          <Route
+            path="/"
+            element={
+              location.pathname === "/" ? (
+                <div className="product-list">
+                  {loading && <p>Loading products...</p>}
+                  {error && <p>Error: {error}</p>}
+                  {!loading &&
+                    !error &&
+                    [...newProducts, ...products].map((product) => (
+                      <ProductCard
+                        key={product.id}
+                        name={product.title}
+                        price={product.price}
+                        image={product.image}
+                        description={product.description}
+                        addToCart={() => addToCart(product)}
+                      />
+                    ))}
+                </div>
               ) : (
                 <div></div>
               )
-              }
-            />
-          </Routes>
-        </div>
+            }
+          />
+        </Routes>
       </div>
+    </div>
   );
 }
 
 export default App;
-;
