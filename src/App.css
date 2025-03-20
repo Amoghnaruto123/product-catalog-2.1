@@ -77,6 +77,16 @@ nav {
   transition: color 0.5s ease-in-out;
 }
 
+.navbar-cart-btn {
+  font-family: "Courier New", Courier, monospace;
+  font-style: italic;
+  font-size: 20px;
+  font-weight: bold;
+  color: #ff4500;
+  text-decoration: underline;
+  transform: skew(-10deg);
+}
+
 .nav-links a:hover, .nav-links a.active {
   color: #646cff;
   transition: all 0.5s ease-in-out;
@@ -255,11 +265,6 @@ nav {
   resize: vertical;
 }
 
-
-.add-cart-btn{
-  background: linear-gradient(135deg, #646cff, #535bf2);
-  color:white;
-}
 .form-submit:hover {
   transform: translateY(-2px); /* Lift up on hover */
 }
@@ -271,10 +276,6 @@ nav {
   
   
   border: 1px solid #ddd;
-  border-radius: 5px;
-}
-.add-cart-btn{
-  background: linear-gradient(135deg, #646cff, #535bf2);
   color: white;
   border: none;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -294,11 +295,11 @@ nav {
   margin-top: 10px;
   transition: background-color 0.3s ease;
 }
-
 button{
-  /*background: linear-gradient(135deg, #646cff, #535bf2);*/
-  color: black;
+  background: linear-gradient(135deg, #646cff, #535bf2);
+  color: white;
   padding: 14px 24px;
+  font-weight: 500;
   border: none;
   border-radius: 10px;
   transition: all 0.3s ease;
@@ -412,4 +413,5 @@ button{
   .cart-item img{
     width:100%;
   }
+}
 }
