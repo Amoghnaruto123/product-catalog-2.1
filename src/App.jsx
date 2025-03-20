@@ -21,7 +21,7 @@ function App() {
       setLoading(true);
       setError(null);
       try {
-        const response = await fetch("https://fakestoreapi.com/products?limit=4");
+        const response = await fetch("https://fakestoreapi.com/products?limit=20");
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         } else {
