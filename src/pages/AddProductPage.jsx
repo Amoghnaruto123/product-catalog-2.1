@@ -15,6 +15,11 @@ function AddProductPage({ addNewProduct }) {
   const handleSubmit = (event) => {
     event.preventDefault();
 
+    if (!imageUrl) {
+        alert("Please add an image for the product.");
+        return;
+      }
+
     const newProduct = {
       title: productName,
       price: parseFloat(price),
@@ -22,13 +27,14 @@ function AddProductPage({ addNewProduct }) {
       image: imageUrl || defaultImageUrl,
       category: category,
     };
-        
+
     if(imageUrl){
         setNewProductImageUrl(imageUrl);
     }
     addNewProduct(newProduct);
     setProductName('');
     setPrice('');
+
     setDescription('');
     setImageFile(null);
     setImageUrl('');
@@ -36,7 +42,7 @@ function AddProductPage({ addNewProduct }) {
   };
 
   const handleImageChange = (event) => {
-    const file = event.target.files[0];
+     const file = event.target.files[0];
      if (file && (file.type === 'image/png' || file.type === 'image/jpeg')) {
        setImageFile(file);
           const fileReader = new FileReader();
@@ -95,7 +101,7 @@ function AddProductPage({ addNewProduct }) {
             id="image"
             accept=".png, .jpg"
             onChange={handleImageChange}
-            
+
             aria-label="Image Upload"
           />
         </div>
