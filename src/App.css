@@ -422,6 +422,9 @@ button:hover{
   flex-direction: row;
   gap: 20px;
   align-items:center;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 20px;
 }
 
 .cart-item img {
@@ -444,11 +447,23 @@ button:hover{
   border-radius: 4px;
   margin: 0 0.5rem;
 }
+.buy-button{
+  background: linear-gradient(135deg, #646cff, #535bf2);
+  color: white;
+  padding: 14px 24px;
+  font-weight: 500;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
 .cart-item .price,.cart-total span{
   font-size: 1.2rem;
 
 }
-
+.buy-button:hover,.google-auth-button:hover{
 .cart-total {
   margin-top: 20px;
   border-top: 2px solid #ddd;

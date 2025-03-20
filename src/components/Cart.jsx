@@ -49,7 +49,7 @@ function Cart({ cart, setCart }) {
                 </span>
               </div>
               <div className='remove-container' >
-              <button className='remove-button' onClick={() => removeItem(item)}>
+                <button className='remove-button' onClick={() => removeItem(item)}>
               <i className="fa-solid fa-trash"></i>
                 </button>
                 </div>  
@@ -61,6 +61,7 @@ function Cart({ cart, setCart }) {
           <p>Total Items: {totalItems}</p>
           <p>Grand Total: ₹{grandTotal.toFixed(2)}</p>
         </div>)}
+        {cart.length > 0 && <button className="buy-button">Buy now</button>}
     </div>
   );
 }
