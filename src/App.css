@@ -282,11 +282,22 @@ nav {
   border-radius: 10px;
   cursor: pointer;
   transition: all 0.3s ease;
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: #fff;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
 }
 
 button{
-  background: linear-gradient(135deg, #646cff, #535bf2);
-  color: white;
+  /*background: linear-gradient(135deg, #646cff, #535bf2);*/
+  color: black;
   padding: 14px 24px;
   border: none;
   border-radius: 10px;
