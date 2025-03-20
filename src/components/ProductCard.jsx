@@ -21,4 +21,3 @@ const ProductCard = ({ id, name, price, description, image, addToCart }) => {
     )
 }
 export default ProductCard;
-

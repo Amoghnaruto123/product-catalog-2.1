@@ -11,6 +11,7 @@ function AddProductPage({ addNewProduct }) {
   const [category, setCategory] = useState('Electronics');
   const defaultImageUrl = 'https://via.placeholder.com/150';
 
+    const [newProductImageUrl, setNewProductImageUrl] = useState(null);
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -21,7 +22,10 @@ function AddProductPage({ addNewProduct }) {
       image: imageUrl || defaultImageUrl,
       category: category,
     };
-
+        
+    if(imageUrl){
+        setNewProductImageUrl(imageUrl);
+    }
     addNewProduct(newProduct);
     setProductName('');
     setPrice('');
@@ -90,6 +94,7 @@ function AddProductPage({ addNewProduct }) {
             type="file"
             id="image"
             accept=".png, .jpg"
+            onChange={handleImageChange}
             
             aria-label="Image Upload"
           />
@@ -113,7 +118,7 @@ function AddProductPage({ addNewProduct }) {
           ) : (
              <img src={defaultImageUrl} alt="Default Product" className='product-img-preview'/>
            )}
-        
+        {newProductImageUrl && <img src={newProductImageUrl} alt="Added Product" className='product-img-preview' />}
       </form>
     </div>
   );

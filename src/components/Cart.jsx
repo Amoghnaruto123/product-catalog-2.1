@@ -2,7 +2,6 @@ import React from 'react';
 function Cart({ cart, setCart }) {
   const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0)
   const grandTotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0)
-
   const removeItem = (itemToRemove) => {
     const newCart = cart.filter((item) => item.id !== itemToRemove.id)
     setCart(newCart)
@@ -22,8 +21,6 @@ function Cart({ cart, setCart }) {
     );
   }
   
-  
-  
   return (
     <div className="cart-container">
       <h2>Your Cart</h2>
@@ -31,8 +28,8 @@ function Cart({ cart, setCart }) {
         <p>Your cart is empty.</p>
       ) : (
         <ul className="cart-items">
-          
           {cart.map((item, index) => (
+
             <li key={index} className="cart-item">
               <img src={item.image || '/placeholder.jpg'} alt={item.title} className="item-image" />
               <div className='item-details'>
